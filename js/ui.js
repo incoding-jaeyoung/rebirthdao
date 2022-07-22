@@ -161,7 +161,7 @@ function commonTween() {
                 end: "0% 0%", // 앞 : 객체 , 뒤 : 페이지 전체
                 //                scrub: true, //스크롤에 반응 (없으면 자동재생)
                 //                markers: true,
-                toggleActions: "play complete none none",
+                toggleActions: "restart none none none",
             },
         });
         upmotion.from(text, 1, {
@@ -221,11 +221,7 @@ function commonTween() {
             stagger: 0.1,
             scrollTrigger: {
                 trigger: $(this),
-                start: "0% 90%", // 앞 : 객체 , 뒤 : 페이지 전체
-                end: "0% 90%", // 앞 : 객체 , 뒤 : 페이지 전체
-                //                        scrub: 1, //스크롤에 반응 (없으면 자동재생)
-                //                markers: true,
-                toggleActions: "play none none none",
+                toggleActions: "restart none none none",
             },
             ease: 'power1.out'
         })
@@ -496,19 +492,6 @@ function init() {
     })
     $('.story-con a').on('click',function(){
         $(this).addClass('active');
-        setTimeout(function () {
-            $(".section-01, .section-02, .section-03").hide();
-            $(".section-story-01, .section-story-02").show();
-            $("html, body").scrollTop(0);
-            gsap.set(".section-story-01 .dao-world img.earth-story", {
-                opacity:0,
-                y:100,
-            })
-            gsap.to(".section-story-01 .dao-world img.earth-story", 1, {
-                opacity:1,
-                y:0,
-            })
-        }, 1000);
         return false;
     })
     $('.navTrigger').on('click',function(){
@@ -521,6 +504,33 @@ function init() {
         $('.navTrigger').removeClass('active');
         $('.m-menu').removeClass('active')
         //$('body').removeClass('fixed')
+    })
+    $('.story-con a').on('click',function(){
+        $(this).addClass('active');
+        setTimeout(function () {
+            $(".section-01, .section-02, .section-03, #header").hide();
+            $(".section-story-01, .section-story-02").show();
+            $('html, body').addClass('active')
+            $("html, body").scrollTop(0);
+            gsap.set(".section-story-01 .dao-world img.earth-story", {
+                opacity:0,
+                y:100,
+            })
+            gsap.to(".section-story-01 .dao-world img.earth-story", 1, {
+                opacity:1,
+                y:0,
+            })
+        }, 2000);
+        return false;
+    })
+    $('.close-story').on('click',function(){
+        $('.story-con a').removeClass('active');
+        setTimeout(function () {
+            $(".section-01, .section-02, .section-03, #header").fadeIn();
+            $(".section-story-01, .section-story-02").fadeOut();
+            gsap.to(window, {duration:0, scrollTo:"#page02"});
+            $('html, body').removeClass('active')
+        }, 1000);
         return false;
     })
     
