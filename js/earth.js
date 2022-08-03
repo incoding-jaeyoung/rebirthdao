@@ -54,9 +54,9 @@
                   transparent: true
                },
                textures: {
-                  map: '../img/2k_earth_daymap.jpg',
-                  bumpMap: '../img/earthbump1k.jpg',
-                  specularMap: '../img/earthspec1k.jpg'
+                  map: 'img/2k_earth_daymap.jpg',
+                  bumpMap: 'img/earthbump1k.jpg',
+                  specularMap: 'img/earthspec1k.jpg'
                }
             },
             atmosphere: {
@@ -65,8 +65,8 @@
                   opacity: 0.8
                },
                textures: {
-                  map: '../img/earthcloudmap.jpg',
-                  alphaMap: '../img/earthcloudmaptrans.jpg',
+                  map: 'img/earthcloudmap.jpg',
+                  alphaMap: 'img/earthcloudmaptrans.jpg',
                }
             },
          });
@@ -85,7 +85,7 @@
          let textureLoader = new THREE.TextureLoader();
          textureLoader.crossOrigin = true;
          textureLoader.load(
-            '../img/earth-glow.png',
+            'img/earth-glow.png',
             (texture) => {
                var glowMat = new THREE.SpriteMaterial({
                   map: texture,
@@ -384,7 +384,7 @@
          const arrow = infoCon.querySelector('.arrow');
    
          location.innerHTML = listData[idx].location;
-         thumb.innerHTML = `<img src="../img/earth-list-img${idx+1}.png" />`;
+         thumb.innerHTML = `<img src="img/earth-list-img${idx+1}.png" />`;
          name.innerHTML = listData[idx].name;
          type.innerHTML = listData[idx].type;
 

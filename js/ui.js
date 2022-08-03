@@ -9,10 +9,8 @@ var heroImgHeight;
 $(document).ready(function () {
     $('body').imagesLoaded().done(function (instance) {
         console.log('image loaded!!')
-//        mobileProxy()
         init();
         headerScroll();
-        sectionTween();
         commonTween()
     });
 });
@@ -248,199 +246,6 @@ function mobileProxy() {
 }
 
 
-function sectionTween() {
-    gsap.config({
-        nullTargetWarn: false
-    });
-    // index page
-    if (document.querySelector(".interviewSwiper")) {
-        commonTween()
-        ScrollTrigger.matchMedia({
-            "(min-width:1000px)": function () {
-                //pc
-                gsap.to($(".interviewSwiper .swiper-wrapper"), {
-                    scrollTrigger: {
-                        trigger: ".interviewSwiper .swiper-wrapper",
-                        start: "100% 750px", // 앞 : 객체 , 뒤 : 페이지 전체
-                        end: "100% 0%", // 앞 : 객체 , 뒤 : 페이지 전체
-                        scrub: 1, //스크롤에 반응 (없으면 자동재생)
-                        // markers: true,
-                         pin:true,
-                        pinSpacing:true,
-                        toggleActions: "restart pause pause pause",
-                    },
-                    x: '-300%',
-                })
-            },
-            "(max-width:1000px)": function () {
-                //mobile
-                gsap.to($(".interviewSwiper .swiper-wrapper"), {
-                    scrollTrigger: {
-                        trigger: ".interviewSwiper .swiper-wrapper",
-                        start: "100% 70%", // 앞 : 객체 , 뒤 : 페이지 전체
-                        end: "100% 20%", // 앞 : 객체 , 뒤 : 페이지 전체
-                        scrub: 1, //스크롤에 반응 (없으면 자동재생)
-                        // markers: true,
-                        pin:true,
-                        pinSpacing:true,
-                        toggleActions: "restart pause pause pause",
-                    },
-                    x: '-300%',
-                })
-            },
-
-        })
-
-
-
-
-        const section02 = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".section-02",
-                start: "0% 0%", // 앞 : 객체 , 뒤 : 페이지 전체
-                end: "100% 0%", // 앞 : 객체 , 뒤 : 페이지 전체
-                scrub: 1, //스크롤에 반응 (없으면 자동재생)
-                //                    markers: true,
-                pin: true,
-                //                    pinSpacing:false,
-                toggleActions: "restart pause pause pause",
-            },
-        });
-        
-
-        ScrollTrigger.matchMedia({
-            "(min-width:769px)": function () {
-                //pc
-                gsap.to($(".hero-image img"), {
-                    scrollTrigger: {
-                        trigger: ".hero-image img",
-                        start: "0% 80%", // 앞 : 객체 , 뒤 : 페이지 전체
-                        end: "100% 0%", // 앞 : 객체 , 뒤 : 페이지 전체
-                        scrub: 1, //스크롤에 반응 (없으면 자동재생)
-                        //                    markers: true,
-                        //                    pin:true,
-                        //                    pinSpacing:false,
-                        toggleActions: "restart pause pause pause",
-                    },
-//                    filter: 'blur(0px)',
-
-                })
-                gsap.to($(".hero-image"), {
-                    scrollTrigger: {
-                        trigger: ".hero-image img",
-                        start: "0% 80%", // 앞 : 객체 , 뒤 : 페이지 전체
-                        end: "100% 0%", // 앞 : 객체 , 뒤 : 페이지 전체
-                        scrub: 1, //스크롤에 반응 (없으면 자동재생)
-                        //                    markers: true,
-                        //                    pin:false,
-                        //                    pinSpacing:false,
-                        toggleActions: "restart pause pause pause",
-                    },
-                    scale: 1,
-                })
-
-            },
-            "(max-widt:768px)": function () {
-                //mobile
-            },
-
-        })
-
-
-        heroHeight = $(".section-04 .hero-image").height();
-        heroImgHeight = $(".section-04 .hero-image img").height() - 1;
-        var heroImgMove = heroImgHeight - heroHeight
-        const section04 = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".section-04",
-                start: "0% 0%", // 앞 : 객체 , 뒤 : 페이지 전체
-                end: "200% 0%", // 앞 : 객체 , 뒤 : 페이지 전체
-                scrub: 1, //스크롤에 반응 (없으면 자동재생)
-                //                    markers: true,
-                pin: true,
-                toggleActions: "restart pause pause pause",
-            },
-        });
-        section04.to(".section-04 .hero-image img", {
-                duration: 3,
-                y: -heroImgMove,
-                overwrite: "auto",
-                delay: 1,
-            }, 'move')
-            .from(".section-04 .article-01 .row", {
-                y: "50%",
-                opacity: 0,
-                overwrite: "auto",
-
-            }, 'move')
-            .to(".section-04 .article-01 .row", {
-                y: "-50%",
-                opacity: 0,
-                delay: 1,
-            }, 'move+=0.5')
-            .from(".section-04 .article-02 .row", {
-                y: "50%",
-                opacity: 0,
-                delay: 1,
-            }, 'move+=1')
-            .to(".section-04 .article-02 .row", {
-                delay: 2,
-            }, 'move+=2.5')
-
-        const section03 = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".section-03",
-                start: "0% 0%", // 앞 : 객체 , 뒤 : 페이지 전체
-                end: "200% 0%", // 앞 : 객체 , 뒤 : 페이지 전체
-                scrub: 1, //스크롤에 반응 (없으면 자동재생)
-                //                    markers: true,
-                pin: true,
-                //                    pinSpacing:false,
-                toggleActions: "restart pause pause pause",
-            },
-        });
-        //            section03.from(".section-03 .bg", {
-        //                opacity:0,
-        //            },'ess')
-        section03.from(".section-03 .ess dt", {
-                opacity: 0,
-                y: '-100%',
-            }, 'ess')
-            .from(".section-03 .ess dd", {
-                opacity: 0,
-                y: '100%',
-            }, 'ess')
-            .from(".section-03 .text-bot", {
-                opacity: 0,
-                y: '100%',
-            }, 'ess')
-            .to(".section-03 .ess", {
-                opacity: 0,
-                scale: 0.5,
-            }, "+=0.3")
-            .from(".section-03 .ico-contents", {
-                opacity: 0,
-                scale: 0.5,
-            })
-
-        gsap.from($(".character-info"), {
-            scrollTrigger: {
-                trigger: ".section-story-02",
-                start: "50% 80%", // 앞 : 객체 , 뒤 : 페이지 전체
-                end: "50% 80%", // 앞 : 객체 , 뒤 : 페이지 전체
-                //                    markers: true,
-                toggleActions: "play pause reverse pause",
-                //                    pin:true,
-            },
-            opacity:0,
-        })
-
-
-
-
-        return;
-    }
-}
 
 
 
@@ -507,6 +312,7 @@ function init() {
     })
     $('.story-con a').on('click',function(){
         $(this).addClass('active');
+        $('.overay-story').addClass('active');
         setTimeout(function () {
             $(".section-01, .section-02, .section-03, #header").hide();
             $(".section-story-01, .section-story-02").show();
@@ -520,11 +326,13 @@ function init() {
                 opacity:1,
                 y:0,
             })
+            swiper1.update()
         }, 2000);
         return false;
     })
     $('.close-story').on('click',function(){
         $('.story-con a').removeClass('active');
+        $('.overay-story').removeClass('active');
         setTimeout(function () {
             $(".section-01, .section-02, .section-03, #header").fadeIn();
             $(".section-story-01, .section-story-02").fadeOut();
