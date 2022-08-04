@@ -73,15 +73,15 @@
            <dt><button type="button">메뉴</button></dt>
            <dd>
                <ul>
-                   <li><a href="#"><img src="img/menu-01.png" width="30" alt=""></a></li>
-                   <li><a href="#"><img src="img/menu-02.png" width="30" alt=""></a></li>
-                   <li><a href="#"><img src="img/menu-03.png" width="30" alt=""></a></li>
-                   <li><a href="#"><img src="img/menu-04.png" width="30" alt=""></a></li>
-                   <li><a href="#"><img src="img/menu-05.png" width="30" alt=""></a></li>
-                   <li><a href="#"><img src="img/menu-06.png" width="30" alt=""></a></li>
-                   <li><a href="#"><img src="img/menu-07.png" width="30" alt=""></a></li>
-                   <li><a href="#"><img src="img/menu-08.png" width="30" alt=""></a></li>
-                   <li><a href="#"><img src="img/menu-09.png" width="30" alt=""></a></li>
+                   <li><a href="#"><img src="img/menu-01.png" alt=""></a></li>
+                   <li><a href="#"><img src="img/menu-02.png" alt=""></a></li>
+                   <li><a href="#"><img src="img/menu-03.png" alt=""></a></li>
+                   <li><a href="#"><img src="img/menu-04.png" alt=""></a></li>
+                   <li><a href="#"><img src="img/menu-05.png" alt=""></a></li>
+                   <li><a href="#"><img src="img/menu-06.png" alt=""></a></li>
+                   <li><a href="#"><img src="img/menu-07.png" alt=""></a></li>
+                   <li><a href="#"><img src="img/menu-08.png" alt=""></a></li>
+                   <li><a href="#"><img src="img/menu-09.png" alt=""></a></li>
                </ul>
            </dd>
        </dl>
@@ -91,7 +91,7 @@
        <div class="section-01">
            <div class=" row visual-image full-landing-image ">
                 <img src="img/img-logo.png" width="245" alt="REBIRTH DAO" class="logo">
-                <img src="img/slogan.png" height="51" alt="" class="slogan-img">
+                <img src="img/slogan.png" height="90" alt="" class="slogan-img">
             </div>
            <script>
             $(".full-landing-image").ripples({
@@ -107,7 +107,7 @@
            <div class="row">
                <h2 class="title" id="page01">ABOUT US</h2>
                <div class="content-row">
-                   <h3 class="sub-title title-01">ECOTAINMENT</h3>
+                   <h3 class="sub-title title-01">ECO-TAINMENT</h3>
                    <p class="slogan"><img src="img/text-copy.png" alt=""></p>
                    <p class="text mT25 ">Rebirth DAO is a DAO executing global <em>Eco-Entertainment</em> projects that encompass the promotion of underlooked Global ESG activities, making it easy for individuals, corporates, and institutions to participate in saving Earth. </p>
                    <div class="eco-con">
@@ -168,7 +168,7 @@
                             <p class="img"><img src="img/ico-embt-03.png" width="140" alt=""></p>
                             <dl>
                                 <dt># NFT MINTING</dt>
-                                <dd>Rebirth Dao NFT </dd>
+                                <dd>Rebirth DAO NFT </dd>
                             </dl>
                         </li>
                         <li>
@@ -360,12 +360,19 @@
                                 console.log('slide changed 11');
                                 var index = swiper.activeIndex - 13;
                                 if(index == 13) index = 0;
-                                console.log(index) 
+                                // console.log(index)
                                 
                                 $('.team-cont dl').removeClass('active');
                                 $('.team-cont dl').eq(index).addClass('active')
                             });
-                            
+                            $(document).ready(function () {
+                                $('.teamSwiper .team-block').on('click',function(){
+                                    var indexNum = $('.team-block').index(this)-13
+                                    if(indexNum == 13) indexNum = 0;    
+                                    $('.team-slider .swiper-pagination span').eq(indexNum).trigger("click")
+                                    console.log(indexNum)
+                                })
+                            })
                         </script>
                         <div class="team-cont">
                             <dl class="active">
@@ -404,7 +411,7 @@
                             </dl>
                             <dl>
                                 <dt><b>SOPHIE.S</b>Business development</dt>
-                                <dd>The mother of Rebirth Dao, a one-person team leader, robust strategic planning and business development with excellent working experience.
+                                <dd>The mother of Rebirth DAO, a one-person team leader, robust strategic planning and business development with excellent working experience.
                                 </dd>
                             </dl>
                             <dl>
@@ -417,7 +424,7 @@
                                 </dd>
                             </dl>
                             <dl>
-                                <dt><b>CHAN.L</b>3D Artist</dt>
+                                <dt><b>CHAN.C</b>3D Artist</dt>
                                 <dd>3D Lookdev artist leads you to a 3D world of extraordinary quality.
                                 </dd>
                             </dl>
@@ -453,7 +460,7 @@
                 <div class="content-row">
                     <div class="fqa-block fade">
                         <dl>
-                            <dt><button type="button">Q. What is Rebirth Dao?</button> <img src="img/ico-arrow-down.png" width="22.5" alt=""></dt>
+                            <dt><button type="button">Q. What is Rebirth DAO?</button> <img src="img/ico-arrow-down.png" width="22.5" alt=""></dt>
                             <dd>Rebirth DAO is a decentralized Web3-based Eco-tainment project to enhance the participation of global cooperation, agencies, and individuals in environmental activities by providing entertainment and benefits.</dd>
                         </dl>
                         <dl>
@@ -475,7 +482,7 @@
                         <dl>
                             <dt><button type="button">Q. What is Rebirth DAO’s next step?</button> <img src="img/ico-arrow-down.png" width="22.5" alt=""></dt>
                             <dd>Starting with Rebirth DAO’s first release of PFP NFT, we do our utmost to expand the ecosystem. Moreover, everyone worldwide can participate in the environmental activity conducted within the Rebirth DAO’s community. Rebirth DAO will provide benefits and rewards as an environmental booster for users. <br>
-                                More eco-tainment-based communities are to be operated; issuing Rebirth DAO token and Metaverse are under development.
+                                More Eco-tainment-based communities are to be operated; issuing Rebirth DAO token and Metaverse are under development.
                             </dd>
                         </dl>
                     </div>

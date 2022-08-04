@@ -285,9 +285,13 @@ function init() {
     setTimeout(function(){
         $('#header').addClass('load')
     },500)
-    $('.float-menu dt button').on('click', function () {
+    $('.float-menu dt button').on('mouseover', function () {
         $(this).toggleClass('active')
         $('.float-menu dd').toggleClass('active')
+    })
+    $('.float-menu').on('mouseleave', function () {
+        $('.float-menu dt button').removeClass('active')
+        $('.float-menu dd').removeClass('active')
     })
     $('.fqa-block dt button').on('click', function () {
         $(this).parents('dl').toggleClass('active')
