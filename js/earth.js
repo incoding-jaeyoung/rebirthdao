@@ -1,5 +1,5 @@
 (() => {
-
+   
    const toRadian = d => Math.PI * d/180;
    
    let isMobile = false;
@@ -20,12 +20,12 @@
    const earth3d = (() => {
 
       let container, renderer, scene, aspect, fov, camera, earth, glow;
-      let isMove = true;
+      let isMove = false;
    
       const countryRotations = [
-         { x: 10, y: 240 },
-         { x: 5, y: 192 },
-         { x: 46, y: 215 },
+         { x: 30, y: 346, z: 0 },
+         { x: 15, y: 195, z: 0 },
+         { x: 55, y: 191, z: -14 },
       ];
    
       function init () {
@@ -214,29 +214,31 @@
    
       return {
          earth: () => earth,
+         isMove: () => isMove,
          rotateCountry : idx => {
             if(idx === 0) {
                isMove = true;
-               gsap.to(earth.rotation, 1, { x: 0, ease: Cubic.easeInOut });
-               gsap.to(renderer.domElement, 0.6, { x: 0, y:0, ease: Cubic.easeOut});
+               // gsap.to(earth.rotation, 1, { x: 0, ease: Cubic.easeOut });
+               gsap.to(renderer.domElement, 0.6, { x: 0, y:0, ease: Cubic.easeInOut});
             } else {
                isMove = false;
                gsap.to(earth.rotation, 1, {
                   x: toRadian(countryRotations[idx-1].x), 
                   y: toRadian(countryRotations[idx-1].y), 
+                  z: toRadian(countryRotations[idx-1].z), 
                   ease: Cubic.easeInOut
                });
                if(isMobile) {
                   gsap.to(renderer.domElement, 0.6, { y: 120, ease: Cubic.easeOut});
                } else {
-                  gsap.to(renderer.domElement, 0.6, { x: 275, ease: Cubic.easeOut});
+                  gsap.to(renderer.domElement, 0.6, { x: 305, y: -10, ease: Cubic.easeOut});
                }
             }
          }
       }
       
    })();
-   
+   window.earth3d = earth3d;
    
    const earthList = (()=> {
       const listData = [
@@ -295,6 +297,7 @@
       let radius = 430;
       let isTransition = false;
       let isInfo = false;
+      let isFirst = true;
    
    
       function init() {
@@ -358,10 +361,13 @@
       function clickList( list, num ) {
          const idx = parseInt(list.getAttribute('idx'));
          if(idx == 0) {
-            if(!isInfo) showInfo(num);
+            if(isFirst) {
+               if(!isInfo) showInfo(num);
+               isFirst = false;
+            }
          } else {
             nextPage();
-         }  
+         }
       }
    
       function setPosition () {
@@ -450,6 +456,7 @@
                },
                onComplete: () => {
                   setPosition();
+                  showInfo(currentIdx);
                   isTransition = false;
                   if(i === currentIdx){
                      const targetText = listAr[i].querySelector('.text');
@@ -501,6 +508,7 @@
                onComplete: () => {
                   listAr[i].style.zIndex = listAr.length - num;
                   setPosition();
+                  showInfo(currentIdx);
                   isTransition = false;
                   if(i === currentIdx){
                      const targetText = listAr[i].querySelector('.text');
@@ -517,5 +525,13 @@
       document.addEventListener("DOMContentLoaded", init);
    
    })(); 
+
+   $(() => {
+      $(".section-03").on('inview', (e, isInView) => {
+         if(isInView && earth3d.isMove()) {
+            earth3d.earth().rotation.y = toRadian(250);
+         }
+      });
+   });
 })();
 

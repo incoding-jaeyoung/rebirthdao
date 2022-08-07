@@ -106,16 +106,16 @@
 #earthList .info-con .arrow {
    position: absolute;
    left: 285px;
-   top: 90px;
-   width: 322px;
-   height: 89px;
+   top: 190px;
+   width: 386px;
+   height: 101px;
    background: url('../img/earth-arrow.png') no-repeat;
 }
 
 #earthList .info-con .location {
    position: absolute;
-   right: 36px;
-   top: 60px;
+   right: 146px;
+   top: -23px;
    font-family: 'Roboto';
    font-style: normal;
    font-weight: 400;
