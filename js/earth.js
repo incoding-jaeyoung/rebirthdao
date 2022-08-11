@@ -344,6 +344,7 @@
                
                isInfo = false;
                hideInfo();
+               isFirst = true;
                setPosition();
             }
    
@@ -394,7 +395,7 @@
          name.innerHTML = listData[idx].name;
          type.innerHTML = listData[idx].type;
 
-         if(idx == 1) {
+         if(idx == 1 && isMobile) {
             name.style.fontSize = '16px';
          } else {
             name.style.fontSize = '';
